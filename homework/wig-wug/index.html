@@ -1,0 +1,159 @@
+
+<html>
+<head>
+  <title>the Rubyist</title>
+  <link rel="stylesheet" href="../../style.css">
+  
+  <style>
+  pre {
+    font-family: monospace;
+    font-size: 1.1em;
+    text-align: left;
+  }
+  pre .d { color: #000000; } /* default */
+  pre .f { color: #0000bb; } /* functions */
+  pre .k { color: #007700; } /* keywords */
+  pre .c { color: #ff8000; } /* comments */
+  pre .s { color: #dd0000; } /* strings */
+  </style>
+</head>
+<body>
+<div id="top">
+  <a href="index.html"><img src="../../images/rubyist.png" style="border-width: 0px;"></a><br><br>
+</div>
+<div id="middle">
+<h1>Assignment #1</h1>
+<h2>Wig Wug &mdash; Quest for the Treasured Ruby&reg;</h2>
+
+<p style="width: 600px; margin: auto;">
+  Matz has lost the Treasured Ruby!  He has put together Operation Wig-Wug to find it again, and he is
+  offering the best Treasured Ruby hunter cold hard cash to help him find it.  The goal of Wig-Wug is
+  to beat your opponent's digger to the Treasured Ruby.  You will implement a class much like the Digger
+  class below, which will play the game for you.  The goal is to use the information provided by the 
+  game master to reach the Treasured Ruby in less turns that it takes your opponent.  It is played in 
+  a grid board, so you will know your coordinates and distances will be measured and presented as coordinate
+  pairs.
+</p>
+
+<h3>Submissions are due by September 2</h3>
+<br />
+<p style="width: 600px; margin: auto;">
+Below is further explanation of the game and a really, really stupid version of a digger class.  It merely tries to move closer to the Ruby with no regard for what in its way.  Your class, of course, will want to check for creatures, board boundaries, etc.  A week before submissions are due, I will activate the Gamemaster 9000 and allow you to try out your code.  Look for updates on <a href='http://www.twitter.com/jeremymcanally'>@jeremymcanally's Twitter</a>, <a href="http://www.omgbloglol.com/">his blog</a>, or this web page for instructions on how to access it.</p>
+<br />
+<hr />
+
+<pre>
+<span class="c"># = Wig-Wug
+# == Quest for the Treasured Ruby&reg;
+#
+# Matz has lost the Treasured Ruby!  He has put together Operation Wig-Wug to find it again, and he is
+# offering the best Treasured Ruby hunter cold hard cash to help him find it.  The goal of Wig-Wug is
+# to beat your opponent's digger to the Treasured Ruby.  You will implement a class much like the Digger
+# class below, which will play the game for you.  The goal is to use the information provided by the 
+# game master to reach the Treasured Ruby in less turns that it takes your opponent.  It is played in 
+# a grid board, so you will know your coordinates and distances will be measured and presented as coordinate
+# pairs.
+#
+# === Rules for the board
+# Here are a few rules of the board for Wig-Wug
+#
+#   * Boards are arbitrary widths and heights.  They could be 12x12 or 2x320.
+#   * There are two types of critters roaming about: fleegols and geegols
+#     * Encountering (landng on a space with) a fleegol will cause a short circuit
+#       and stop your digger for one turn
+#     * Encountering geegols will destroy your digger and end the game
+#   * Geegols and fleegols are much like venus fly traps and not able to move
+#   * Diggers are always placed equal distances from the Treasured Ruby but may have
+#     different configurations of fleegol and geegol placement
+# 
+# === Game flow
+#
+# Each digger will be given a chance to move one space each turn.
+# To move, your digger must return which direction to move from the +move!+
+# method.  So for example, to move up, you must return "up" or +:up+.  The
+# only valid directions are "up", "down", "left", and "right".
+#
+# Each time you move, the game master will call +move!+ on your class, passing
+# in how far away you are from the Treasured Ruby as a coordinate array as the first argument 
+# and a matrix of the surrounding spaces as the second argument.  For example, 
+# if the surrounding spaces looked like this...
+# 
+#   O O F
+#   G P O
+#   O O O
+#   
+#   O = open space
+#   G = geegol
+#   F = fleegol
+#   P = player position
+#
+# ...the game master code will call like this...
+#
+#   digger.move!([3, 13],
+#           [
+#             ["O", "O", "F"],
+#             ["G", "P", "O"],
+#             ["O", "O", "O"],
+#           ]
+#         )
+#
+# This signifies there is a fleegol to the NE, a geegol to the west, and you are 3 either 
+# east or west and 13 north or south of the Treasured Ruby.  
+#
+# * If you are at the game board edge, spaces are indicated by "E".  Touching one of these ends your game.
+# * The Treasured Ruby is signified by an "R".  You want to move on to it.
+# * You will not be able to see other players on the board, so don't worry!
+#
+# === A typical game turn
+# 
+# 1. Game master calls move!([0,2], [["O", "O", "O"], ["O", "P", "F"], ["E", "E", "E"]])
+# 2. Digger class returns "up"
+# 3. Game master calls move!([2,0], [["E", "E", "E"], ["O", "P", "O"], ["O", "O", "G"]]) on opposing digger
+# 4. Opposing digger returns "left"
+# 5. Game master calls move!([0,1], [["O", "R", "O"], ["O", "P", "O"], ["O", "O", "F"]])
+# 6. First digger returns "up"; first digger wins!
+#
+# Of course, this is a REALLY arbitrary game, but you get the point.
+#
+</span><span class="k">class </span><span class="f">NaiveDigger
+  def initialize
+    </span><span class="k">@</span><span class="f">previous_x </span><span class="k">= </span><span class="f">0
+    </span><span class="k">@</span><span class="f">previous_y </span><span class="k">= </span><span class="f">0
+    </span><span class="k">@</span><span class="f">previous_x_move </span><span class="k">= </span><span class="s">"left"
+    </span><span class="k">@</span><span class="f">previous_y_move </span><span class="k">= </span><span class="s">"right"
+
+    </span><span class="c"># This will be used as the digger's name and be displayed in the results
+    </span><span class="k">return </span><span class="s">"Me-So-Stupid"
+  </span><span class="f">end
+  
+  def move</span><span class="k">!(</span><span class="f">distance</span><span class="k">, </span><span class="f">matrix</span><span class="k">)
+    if </span><span class="f">distance</span><span class="k">[</span><span class="f">0</span><span class="k">] &gt; </span><span class="f">0
+      </span><span class="k">if </span><span class="f">distance</span><span class="k">[</span><span class="f">0</span><span class="k">] &gt; @</span><span class="f">previous_x
+        </span><span class="k">@</span><span class="f">previous_x_move </span><span class="k">= @</span><span class="f">previous_x_move </span><span class="k">== </span><span class="s">"left" </span><span class="k">? </span><span class="s">"right" </span><span class="k">: </span><span class="s">"left"
+      </span><span class="k">else 
+        return @</span><span class="f">previous_x_move
+      end      
+    </span><span class="k">else
+      if </span><span class="f">distance</span><span class="k">[</span><span class="f">1</span><span class="k">] &gt; @</span><span class="f">previous_y
+        </span><span class="k">@</span><span class="f">previous_y_move </span><span class="k">= @</span><span class="f">previous_y_move </span><span class="k">== </span><span class="s">"up" </span><span class="k">? </span><span class="s">"down" </span><span class="k">: </span><span class="s">"up"
+      </span><span class="k">else 
+        return @</span><span class="f">previous_y_move
+      end
+    end
+  end
+end</span>
+</pre>
+
+</div>
+
+</div>
+
+<div id="bottom">
+<p>
+  The Rubyist&trade;, its content, and design elements are &copy;2008 Jeremy McAnally.<br />
+  Direct any general inquiries to <a href="mailto:editor@therubyist.com">editor@therubyist.com</a>
+</p>
+</div>
+
+</body>
+</html>
