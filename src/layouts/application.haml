@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title the Rubyist
+    = stylesheets :style
+  %body
+    #top
+      = link img("rubyist.png"), "index.html"
+      %br
+      %br
+    = yield
+    #links
+      %p
+        = link "Home" , "index.html"
+        &middot;
+        = link "About", "about.html"
+        &middot;
+        = link "Contribute", "cfp.html"
+        &middot;
+        = link "Advertise", "advertising.html"
+        &middot;
+        = link "Contact", "contact.html"
+    #bottom
+      %p
+        The Rubyist&trade;, its content, and design elements are &copy;2008 Jeremy McAnally.
+        %br/
+        Direct any general inquiries to
+        %a{ :href => "mailto:editor@therubyist.com" }
+          editor@therubyist.com
