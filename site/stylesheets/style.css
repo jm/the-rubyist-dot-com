@@ -1,0 +1,185 @@
+body {
+  padding: 0px;
+  margin: 0;
+  font-family: Garamond, "Adobe Garamond Pro", serif; }
+
+a {
+  color: #820000;
+  text-decoration: none;
+  border: 0px;
+  border-bottom: 1px dotted #820000;
+  padding: 0px; }
+  a img {
+    border: none; }
+
+h4 {
+  color: #aaa;
+  margin: 15px 0px -10px 0px;
+  font-weight: normal;
+  font-style: italic; }
+
+#top {
+  height: 70px;
+  padding-top: 20px;
+  text-align: center;
+  background: #fff;
+  border: 0px;
+  margin-bottom: 18px; }
+  #top a {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    width: 790px;
+    margin: auto; }
+
+#middle {
+  background: url('images/shadow.png') repeat-x;
+  min-height: 80px;
+  padding: 15px;
+  text-align: center; }
+
+h3 {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-bottom: -10px;
+  font-family: "Avent Garde Bk BT", "Avant Garde CE", "Avant Garde", Helvetica, Arial, sans-serif; }
+
+#bottom {
+  clear: both;
+  width: 650px;
+  font-size: 8pt;
+  color: #666;
+  text-align: center;
+  margin: auto;
+  padding: 20px 0px;
+  font-family: sans-serif; }
+  #bottom a {
+    color: #333;
+    text-decoration: none;
+    border: 0px; }
+
+#q-and-a {
+  width: 790px;
+  margin: auto;
+  overflow: hidden; }
+  #q-and-a > div {
+    overflow: hidden; }
+    #q-and-a > div h4 {
+      color: black;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 20px;
+      margin-top: 10px; }
+  #q-and-a.ads > div {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #aaa; }
+    #q-and-a.ads > div:last-child {
+      border-bottom: none; }
+  #q-and-a.about > div > div {
+    width: 600px; }
+  #q-and-a.about h1 {
+    width: 150px; }
+  #q-and-a.about img {
+    width: 150px;
+    max-height: none;
+    border: 1px solid #aaa; }
+  #q-and-a.about h5 p {
+    margin-bottom: 0px;
+    margin-top: 0px; }
+  #q-and-a h3 {
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    font-weight: normal;
+    border-top: 1px solid #aaa; }
+  #q-and-a h1 {
+    font-weight: normal;
+    letter-spacing: -1pt;
+    font-family: "Avent Garde Bk BT", "Avant Garde CE", "Avant Garde", Helvetica, Arial, sans-serif;
+    font-size: 18pt;
+    float: left;
+    clear: left;
+    width: 230px;
+    text-align: right;
+    padding-right: 20px;
+    vertical-align: top; }
+    #q-and-a h1.right {
+      float: right;
+      padding-right: 0px;
+      padding-left: 20px;
+      text-align: left;
+      clear: right; }
+    #q-and-a h1 a {
+      border-bottom: none;
+      width: 230px;
+      text-align: center; }
+      #q-and-a h1 a img {
+        max-width: 220px;
+        max-height: 150px;
+        margin-right: 20px; }
+  #q-and-a div div {
+    float: left;
+    width: 525px;
+    text-align: justify;
+    margin-top: 5px; }
+
+img.menu {
+  margin: 0px 5px; }
+
+font.code {
+  font-family: monospace;
+  background: #F7F8E6;
+  padding: 3px 10px;
+  border: 1px solid #C4C5C3; }
+
+.highlight {
+  background: #F7F8E6;
+  padding: 3px 10px;
+  border: 1px solid #C4C5C3; }
+
+.adlogos {
+  text-align: center; }
+  .adlogos a {
+    border-bottom: none; }
+    .adlogos a img {
+      border: none; }
+    .adlogos a .adlogo1 {
+      width: 200px; }
+    .adlogos a .adlogo2 {
+      height: 100px; }
+
+hr {
+  text-align: center; }
+
+#links {
+  text-align: center;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  width: 790px;
+  margin: auto;
+  margin-top: 20px; }
+  #links p {
+    margin-top: 5px;
+    margin-bottom: 5px; }
+    #links p a {
+      border-bottom: none;
+      text-transform: uppercase;
+      margin-right: 10px;
+      margin-left: 10px; }
+
+#email-list {
+  width: 790px;
+  margin: auto;
+  overflow: hidden;
+  padding-bottom: 5px; }
+  #email-list dl dt {
+    float: left;
+    margin-left: 250px;
+    font-weight: bold;
+    width: 150px; }
+  #email-list dl dd {
+    float: left;
+    clear: right; }
