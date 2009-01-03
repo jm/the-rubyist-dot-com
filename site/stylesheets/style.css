@@ -21,24 +21,20 @@ h4 {
 #top {
   height: 70px;
   padding-top: 20px;
-  padding-bottom: 30px;
-  text-align: left;
+  text-align: center;
   background: #fff;
   border: 0px;
-  width: 650px;
-  margin: auto;
-  margin-bottom: 18px;
-  border-bottom: 1px solid #aaa; }
+  margin-bottom: 18px; }
   #top a {
     border: none;
+    border-bottom: 1px solid #aaa;
     width: 790px;
     margin: auto; }
-  #top .blob {
-    float: right; }
 
 #middle {
   background: url('images/shadow.png') repeat-x;
   min-height: 80px;
+  padding: 15px;
   text-align: center;
   position: relative; }
   #middle img {
@@ -48,6 +44,12 @@ h4 {
     margin: auto; }
   #middle .sub {
     clear: right; }
+  #middle .blob {
+    float: right; }
+    #middle .blob a {
+      border-bottom: none; }
+    #middle .blob img {
+      border: none; }
 
 h3 {
   font-size: 18pt;
