@@ -1,7 +1,8 @@
 body {
   padding: 0px;
   margin: 0;
-  font-family: Garamond, "Adobe Garamond Pro", serif; }
+  font-family: Garamond, "Adobe Garamond Pro", serif;
+  position: relative; }
 
 a {
   color: #820000;
@@ -31,6 +32,16 @@ h4 {
     width: 790px;
     margin: auto; }
 
+#blob {
+  position: absolute;
+  right: 100px;
+  top: 10px; }
+  #blob a {
+    border-bottom: none; }
+  #blob img {
+    border: none;
+    width: 150px; }
+
 #middle {
   background: url('images/shadow.png') repeat-x;
   min-height: 80px;
@@ -39,13 +50,6 @@ h4 {
   position: relative; }
   #middle img {
     border: 1px solid #aaa; }
-  #middle .blob {
-    position: absolute;
-    right: 50px; }
-    #middle .blob a {
-      border-bottom: none; }
-    #middle .blob img {
-      border: none; }
 
 h3 {
   font-size: 18pt;
