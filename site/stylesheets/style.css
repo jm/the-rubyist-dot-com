@@ -43,9 +43,9 @@ h4 {
     width: 560px;
     margin: auto; }
   #middle .sub {
-    clear: right; }
+    clear: left; }
   #middle .blob {
-    float: right; }
+    float: left; }
     #middle .blob a {
       border-bottom: none; }
     #middle .blob img {
