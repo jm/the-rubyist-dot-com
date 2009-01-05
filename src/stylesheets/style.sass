@@ -2,6 +2,7 @@ body
   padding: 0px
   margin: 0
   font-family: Garamond, "Adobe Garamond Pro", serif
+  position: relative
 
 a
   color: #820000
@@ -21,33 +22,34 @@ h4
 #top
   height: 70px
   padding-top: 20px
-  padding-bottom: 30px
-  text-align: left
+  text-align: center
   background: #fff
   border: 0px
-  width: 650px
-  margin: auto
   margin-bottom: 18px
-  border-bottom: 1px solid #aaa
   a
     border: none
+    border-bottom: 1px solid #aaa
     width: 790px
     margin: auto
-  .blob
-    float: right
+
+#blob
+  position: absolute
+  right: 100px
+  top: 10px
+  a
+    border-bottom: none
+  img
+    border: none
+    width: 150px
   
 #middle
   background: url('images/shadow.png') repeat-x
   min-height: 80px
+  padding: 15px
   text-align: center
   position: relative
   img
     border: 1px solid #aaa
-  .top
-    width: 560px
-    margin: auto
-  .sub
-    clear: right
   
 h3
   font-size: 18pt
